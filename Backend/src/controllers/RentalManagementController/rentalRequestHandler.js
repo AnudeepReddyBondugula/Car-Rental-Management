@@ -1,0 +1,3 @@
+export const rentalRequestHandler = async () => {
+    
+}

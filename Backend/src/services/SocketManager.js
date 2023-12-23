@@ -6,22 +6,12 @@ function initializeSocket(server) {
     io = new socketIO.Server(server, {
         cors : {
             origin : "*",
+            methods: "*"
         }
     });
 
     io.on('connection', (socket) => {
-        let lat;
-        let long;
-
         console.log("User Connected");
-
-        socket.on("change", (args) => {
-            console.log("Change", args);
-            io.emit("change", {
-                lat: args.lat, 
-                long: args.long
-            })
-        })
 
         socket.on("disconnect", () => {
             console.log("User Disconnected");

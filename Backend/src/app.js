@@ -1,35 +1,30 @@
 // server.js
 const express = require('express');
 const http = require('http');
-const socketIO = require('socket.io');
-
 const app = express();
 const server = http.createServer(app);
-const io = new socketIO.Server(server, {
-  cors : {
-    origin : "*",
-    methods : "*"
-  }
+
+const bodyParser = require("body-parser");
+const cors = require("cors")
+const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/admin");
+
+const {logger} = require("./middlewares/logger");
+
+app.use(cors({
+  credentials : true
+}))
+
+app.use(bodyParser.json());
+app.use(logger);
+
+app.use('/', indexRouter);
+app.use("/admin", adminRouter);
+
+app.use("*", (req, res) => {
+  res.status(404).json({
+    error : "Page not found"
+  })
 });
 
-const cors = require('cors');
-
-io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  socket.on("change", (args) => {
-    io.emit("change", {
-        lat: args.lat, 
-        long: args.long
-    })
-})
-
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
-});
-
-const PORT = process.env.PORT || 3001;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = server;
