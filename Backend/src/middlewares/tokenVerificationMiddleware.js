@@ -10,7 +10,7 @@ const tokenVerification = async (req, res, next) => {
             })
         }
         const jwTokenData = await verifyToken(token, process.env.SECRET);
-        req.body.jwTokenData = jwTokenData;
+        req.jwTokenData = jwTokenData;
         next();
     }
     catch(err){

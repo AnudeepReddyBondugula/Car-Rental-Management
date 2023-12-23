@@ -1,3 +1,3 @@
-export const rentalsHistoryHandler = async () => {
+export const rentalsHistoryHandler = async (req, res) => {
     
 }

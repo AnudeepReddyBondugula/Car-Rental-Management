@@ -1,3 +1,3 @@
-export const approveRequestHandler = async () => {
+export const approveRequestHandler = async (req, res) => {
 
 }

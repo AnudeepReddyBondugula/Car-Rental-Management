@@ -1,3 +1,3 @@
-export const rentalRequestHandler = async () => {
+export const rentalRequestHandler = async (req, res) => {
     
 }
