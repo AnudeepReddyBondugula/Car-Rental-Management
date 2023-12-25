@@ -21,6 +21,7 @@ const {
   rentalsNotificationHandler,
 } = require("../services/RentalManagement");
 
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -30,16 +31,11 @@ router.get("/", (req, res) => {
 // Authentication Routed
 router.post("/login", loginHandler); // Log in User
 router.post("/signup", signupHandler); // Register new User
-router.get("/dashboard", tokenVerification, dashboardHandler); // Get User Details
+// router.get("/dashboard", tokenVerification, dashboardHandler); // Get User Details
 
 // Car Management Routes
 // Upload a new car for rent
-router.post(
-  "/cars",
-  tokenVerification,
-  fileUpload({ createParentPath: true }),
-  uploadCarHandler
-);
+router.post("/cars", tokenVerification, fileUpload({ createParentPath: true }), uploadCarHandler);
 
 // Get List of cars
 router.get("/cars", tokenVerification, fetchingCarsHandler);
@@ -56,9 +52,11 @@ router.delete("/cars/:id", tokenVerification, deleteCarHandler);
 // Rental Routes
 // Initiate a request for a specific car
 router.post("/rentals/requests", tokenVerification, rentalRequestHandler);
+// Get the list of rental request made by the user
+router.get("/rentals/requests", tokenVerification, rentalRequestHandler);
 
 // Get the list of rental requests for the owner
-router.get("/rentals/requests", tokenVerification, rentalsNotificationHandler);
+router.get("/rentals/notifications", tokenVerification, rentalsNotificationHandler);
 
 // Approve or Decline the rental request
 router.put("/rentals/requests/:id", tokenVerification, approveRequestHandler);

@@ -1,13 +1,17 @@
-import Car from "../../models/Car";
-import User from "../../models/User";
+const Car = require("../../models/Car");
+const User = require( "../../models/User");
 
-export const deleteCarHandler = async (req, res) => {
+const deleteCarHandler = async (req, res) => {
     const carId = req.params.id;
-    const {username} = req.jwTokenData;
+    const {user_id} = req.jwTokenData;
     try {
-        const user = await User.find({username});
         const car = await Car.findById(carId);
-        if (user._id.toString() !== car.owner_id.toString()) {
+        if (!car){
+            return res.status(404).json({
+                error : "Car not found"
+            })
+        }
+        if (user_id.toString() !== car.owner_id.toString()) {
             return res.status(403).json({error : "Unauthorized: You are not the owner of this car"})
         }
         const deletedCar = await Car.findByIdAndDelete(carId);
@@ -22,3 +26,5 @@ export const deleteCarHandler = async (req, res) => {
         })
     }
 }
+
+module.exports = {deleteCarHandler}

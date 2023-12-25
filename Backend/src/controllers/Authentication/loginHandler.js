@@ -16,7 +16,7 @@ async function loginHandler(req, res) {
                 error : "User not found"
             });
         }
-        const jwtoken = generateToken({username}, process.env.SECRET)
+        const jwtoken = generateToken({username, user_id : user._id}, process.env.SECRET)
 
         res.status(200).json({
             message : "Login success",

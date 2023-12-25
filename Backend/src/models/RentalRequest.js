@@ -1,10 +1,14 @@
-// models/rentalRequest.js
 const mongoose = require('mongoose');
 
 const rentalRequestSchema = new mongoose.Schema({
-  user_id: {
+  requester_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Reference to the Users collection
+    ref: 'User', // Reference to the Users collection for the requester
+    required: true
+  },
+  owner_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User', // Reference to the Users collection for the car owner
     required: true
   },
   car_id: {
@@ -18,7 +22,7 @@ const rentalRequestSchema = new mongoose.Schema({
   },
   desired_pickup_date: {
     type: Date,
-    required: true  // Assuming it's a required field for the user's desired pickup date
+    required: true
   },
   status: {
     type: String,
