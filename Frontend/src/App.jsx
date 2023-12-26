@@ -4,6 +4,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Book from "./pages/Book";
+import UploadCar from "./pages/UploadCar";
+import Rentals from "./pages/Rentals";
+import EditCar from "./pages/EditCar";
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +16,9 @@ function App() {
       <Route path="/signup" exact Component={Register} />
       <Route path="/dashboard" exact Component={Dashboard} />
       <Route path="/book" exact Component={Book} />
+      <Route path="/upload" exact Component={UploadCar} />
+      <Route path="/rentals" exact Component={Rentals} />
+      <Route path="/edit" exact Component={EditCar} />
 		</Routes>
     </BrowserRouter>
   )
