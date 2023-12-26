@@ -12,5 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "nodemon": "^3.0.2"
+  },
+  "nodemonConfig": {
+    "ignore": ["**/test/**", "**/docs/**", "**/Frontend/**"],
+    "delay": 2500
   }
 }

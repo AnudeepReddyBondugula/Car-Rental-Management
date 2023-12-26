@@ -16,11 +16,11 @@ async function loginHandler(req, res) {
                 error : "User not found"
             });
         }
-        const jwtoken = generateToken({username, user_id : user._id}, process.env.SECRET)
+        const jwToken = generateToken({username, user_id : user._id}, process.env.SECRET)
 
         res.status(200).json({
             message : "Login success",
-            jwtoken
+            jwToken
         })
         console.log("SUCCESS: Login Successfull !")
     }
