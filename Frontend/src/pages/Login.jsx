@@ -1,11 +1,21 @@
 import {Button, Input, Typography} from "@material-tailwind/react"
-import { useState } from "react"
-import {Link} from "react-router-dom"
+import { useEffect, useState } from "react"
+import {Link, useNavigate} from "react-router-dom"
+import { loginAccount, verifyAndRedirect } from "../services/AuthenticationProvider";
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    useEffect( () => {
+        verifyAndRedirect(navigate, '/dashboard', null);
+    }, [navigate])
     const handleLogin = async () => {
-
+        const res = await loginAccount(username, password);
+        if (res.returnValue) {
+            navigate("/dashboard");
+        } else{
+            alert(res.error);
+        }
     }
     return (
         <div className='bg-red-400 h-screen flex justify-center items-center'>

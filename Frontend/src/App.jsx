@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Book from "./pages/Book";
 function App() {
   return (
     <BrowserRouter>
@@ -11,6 +12,7 @@ function App() {
       <Route path="/login" exact Component={Login} />
       <Route path="/signup" exact Component={Register} />
       <Route path="/dashboard" exact Component={Dashboard} />
+      <Route path="/book" exact Component={Book} />
 		</Routes>
     </BrowserRouter>
   )

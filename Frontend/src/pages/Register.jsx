@@ -12,7 +12,7 @@ const Register = () => {
 
     useEffect(() => {
       verifyAndRedirect(navigate, '/dashboard', null);
-    })
+    }, [navigate])
 
     const handleRegister = async () => {
       const res = await createAccount({
@@ -25,7 +25,7 @@ const Register = () => {
 
       if (!res.returnValue){
         alert("Error: " + res.error);
-      } else navigate('/dashboard')
+      } else navigate('/login')
       
     }
     return (

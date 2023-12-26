@@ -72,7 +72,7 @@ export const createAccount = async ({
             }
         }
         let body = {username, password, fullName, contactNumber};
-        const {status, responseBody} = await sendJsonRequest("/signup", "POST", null, body)
+        const {status, responseBody} = await sendJsonRequest("/signup", "POST", null, JSON.stringify(body))
         if (status >= 400) {
             return {
                 returnValue : false,

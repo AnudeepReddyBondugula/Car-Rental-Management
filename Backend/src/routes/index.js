@@ -21,6 +21,8 @@ const {
   rentalsNotificationHandler,
 } = require("../services/RentalManagement");
 
+const {dashboardHandler} = require("../controllers/SessionControllers/dashboardHandler")
+
 
 const router = express.Router();
 
@@ -31,7 +33,7 @@ router.get("/", (req, res) => {
 // Authentication Routed
 router.post("/login", loginHandler); // Log in User
 router.post("/signup", signupHandler); // Register new User
-// router.get("/dashboard", tokenVerification, dashboardHandler); // Get User Details
+router.get("/dashboard", tokenVerification, dashboardHandler); // Get User Details
 
 // Car Management Routes
 // Upload a new car for rent
