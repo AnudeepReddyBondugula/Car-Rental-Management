@@ -10,8 +10,8 @@ const CarCard = (props) => {
     }
     const availability_color = availability_status_colors[props.carDetails.availability_status];
   return (
-    <Link className='flex flex-col bg-white w-[200px] p-2 mt-10 rounded-lg hover:bg-blue-gray-50 transition duration-300'>
-        <div><img alt='Image' className='w-[190px] h-[150px] rounded bg-gray-600' /></div>
+    <Link className='flex flex-col bg-white w-[200px] p-2 mt-2 rounded-lg hover:shadow-lg hover:bg-blue-gray-50 transition duration-300'>
+        <div><img alt='Image' className='w-[190px] h-[150px] rounded' /></div>
         <div id='details' className='flex flex-col'>
             <div className='flex justify-between'>
                 <Typography variant='h6'>{props.carDetails.make}</Typography>
