@@ -13,6 +13,7 @@ const {
   deleteCarHandler,
   fetchingCarsHandler,
   updateCarDetailsHandler,
+  getOwnedCarsHandler,
 } = require("../services/CarManager");
 const {
   approveRequestHandler,
@@ -21,7 +22,8 @@ const {
   rentalsNotificationHandler,
 } = require("../services/RentalManagement");
 
-const {dashboardHandler} = require("../controllers/SessionControllers/dashboardHandler")
+const {dashboardHandler} = require("../controllers/SessionControllers/dashboardHandler");
+const { upload, uploadFileMiddleware } = require("../middlewares/uploadFileMiddleware");
 
 
 const router = express.Router();
@@ -37,10 +39,12 @@ router.get("/dashboard", tokenVerification, dashboardHandler); // Get User Detai
 
 // Car Management Routes
 // Upload a new car for rent
-router.post("/cars", tokenVerification, fileUpload({ createParentPath: true }), uploadCarHandler);
+router.post("/cars", tokenVerification, uploadFileMiddleware, uploadCarHandler);
 
 // Get List of cars
 router.get("/cars", tokenVerification, fetchingCarsHandler);
+
+router.get("/ownedcars", tokenVerification, getOwnedCarsHandler);
 
 // Get Details of specific cars
 router.get("/cars/:id", tokenVerification, carDetailsHandler);

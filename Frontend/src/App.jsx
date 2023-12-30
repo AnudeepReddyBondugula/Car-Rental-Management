@@ -7,6 +7,7 @@ import Book from "./pages/Book";
 import UploadCar from "./pages/UploadCar";
 import Rentals from "./pages/Rentals";
 import EditCar from "./pages/EditCar";
+import YourCars from "./pages/YourCars";
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ function App() {
       <Route path="/upload" exact Component={UploadCar} />
       <Route path="/rentals" exact Component={Rentals} />
       <Route path="/edit" exact Component={EditCar} />
+      <Route path="/ownedcars" exact Component={YourCars} />
 		</Routes>
     </BrowserRouter>
   )
