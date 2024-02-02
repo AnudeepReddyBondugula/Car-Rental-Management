@@ -10,7 +10,9 @@ const carDetailsHandler = async (req, res) => {
                 error : "Car not found"
             })
         } else {
-            return res.json(carDetails);
+            return res.json({
+                carDetails
+            });
         }
     } catch (error) {
         if (error instanceof mongoose.Error.CastError){

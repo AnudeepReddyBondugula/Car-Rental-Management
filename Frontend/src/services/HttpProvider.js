@@ -36,3 +36,11 @@ export const sendFormDataRequest = async (path='/', method='GET', formData, head
     const status = response.status;
     return {status, responseBody}
 }
+
+export const getImage = async (imageName) => {
+    const url = constants.VITE_BACKEND_URL + "/static/" + imageName;
+    const response = await fetch(url);
+    const image = await response.bolb();
+    const imageURL = URL.createObjectURL(image);
+    return url;
+}

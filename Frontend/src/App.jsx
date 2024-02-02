@@ -8,6 +8,7 @@ import UploadCar from "./pages/UploadCar";
 import Rentals from "./pages/Rentals";
 import EditCar from "./pages/EditCar";
 import YourCars from "./pages/YourCars";
+import Car from "./pages/Car";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
       <Route path="/rentals" exact Component={Rentals} />
       <Route path="/edit" exact Component={EditCar} />
       <Route path="/ownedcars" exact Component={YourCars} />
+      <Route path='/car' exact Component={Car} />
 		</Routes>
     </BrowserRouter>
   )

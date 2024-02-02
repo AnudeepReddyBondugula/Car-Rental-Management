@@ -22,7 +22,9 @@ const rentalRequestHandler = async (req, res) => {
             
             const owner = await User.findById(car.owner_id);
             if (!owner) return res.status(404).json({error : "User not found"});
-            
+            if (car.owner_id.toString() == requesterId) return res.status(400).json({
+                error : "You are the owner of the car"
+            })
             const newRentalRequest = new RentalRequest({
                 requester_id : requesterId,
                 car_id : carId,

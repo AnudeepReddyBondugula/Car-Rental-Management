@@ -40,9 +40,10 @@ function AppBar(props) {
         </div>
              {expand && <List className='font-bold md:hidden'>
                 <ListItem><Link to='/'>HOME</Link></ListItem>
-                <ListItem><Link to='/upload'>UPLOAD CAR</Link></ListItem>
-                <ListItem><Link to='/book'>BOOK CAR</Link></ListItem>
                 <ListItem><Link to='/dashboard'>DASHBOARD</Link></ListItem>
+                <ListItem><Link to='/book'>BOOK CAR</Link></ListItem>
+                <ListItem><Link to='/upload'>UPLOAD CAR</Link></ListItem>
+                <ListItem><Link to='/rentals'>RENTALS REQUESTS</Link></ListItem>
                 <ListItem onClick={handleLogout}>LOGOUT</ListItem>
             </List>}
         </div>

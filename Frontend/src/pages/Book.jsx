@@ -13,7 +13,7 @@ const Book = () => {
   const [model, setModel] = useState('');
   const [location, setLocation] = useState('');
   const [rentalRate, setRentalRate] = useState(1000);
-  const [carDetails, setCarDetails] = useState(null);
+  const [carDetails, setCarDetails] = useState([]);
 
   const handleSearch = async () => {
     const {status, responseBody} = await sendJsonRequest('/cars');
@@ -56,7 +56,7 @@ const Book = () => {
         <AppBar title={"Booking"}></AppBar>
       </div>
       <div className='flex justify-between h-full'>
-        <div className='bg-blue-gray-900 hidden md:block md:w-2/5 lg:w-1/5 '>
+        <div className='bg-blue-gray-900 hidden md:block md:w-1/5 lg:w-1/5 '>
           <SideBar/>
         </div>
         <div className='bg-blue-gray-50 w-full lg:w-4/5 flex flex-col items-center min-h-max min-w-max'>
@@ -74,12 +74,12 @@ const Book = () => {
             </div>
           </div>
           <div id='searchResult' className=' overflow-y-auto mx-1 self-start my-3 rounded-lg w-[100dvw] md:w-[70dvw] p-3'>
-            {carDetails != null && <>{carDetails.length == 0 ? <div>No Results Found</div> : 
+            {carDetails.length == 0 ? <div>No Results Found</div> : 
             <div className='flex flex-wrap justify-center sm:justify-start gap-2'>
               {carDetails.map(car => {
-                return <CarCard key={car._id} carDetails={car}></CarCard>
+                return <CarCard key={car._id} update={false} carDetails={car}></CarCard>
               })}
-            </div> }</>}
+            </div> }
           </div>
         </div>
       </div>

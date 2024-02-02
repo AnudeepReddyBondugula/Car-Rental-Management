@@ -32,7 +32,7 @@ const Dashboard = () => {
         <AppBar title={"Dashboard"}></AppBar>
       </div>
       <div className='flex justify-between h-full'>
-        <div className='bg-blue-gray-900 hidden md:block md:w-2/5 lg:w-1/5 '>
+        <div className='bg-blue-gray-900 hidden md:block md:w-1/5 lg:w-1/5 '>
           <SideBar/>
         </div>
         <div className='bg-red-400 w-full md:w-full lg:w-4/5 flex justify-center min-h-max'>
