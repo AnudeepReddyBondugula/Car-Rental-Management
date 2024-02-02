@@ -3,6 +3,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const server = http.createServer(app);
+const path = require("path")
 
 const bodyParser = require("body-parser");
 const cors = require("cors")
@@ -17,6 +18,8 @@ app.use(cors({
 
 app.use(bodyParser.json());
 app.use(logger);
+
+app.use("/static",express.static(path.join(__dirname, 'images/')));
 
 app.use('/', indexRouter);
 app.use("/admin", adminRouter);

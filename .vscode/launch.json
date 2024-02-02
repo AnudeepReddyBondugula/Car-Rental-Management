@@ -4,8 +4,10 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
+
         {
-            "name": "Launch via NPM",
+            "name": "Launch Backend",
             "request": "launch",
             "runtimeArgs": [
                 "run",
@@ -16,17 +18,7 @@
                 "<node_internals>/**"
             ],
             "type": "node"
-        },
-
-        {
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/Backend/src/index.js",
-            "request": "launch",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "type": "node"
-        },
+        }
 
     ]
 }

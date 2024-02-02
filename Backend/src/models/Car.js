@@ -33,7 +33,8 @@ const carSchema = new mongoose.Schema({
   availability_status: {
     type: String,
     enum: ['available', 'rented', 'maintenance'],
-    required: true
+    required: true,
+    default : 'available'
   },
   rental_rate: {
     type: Number,
